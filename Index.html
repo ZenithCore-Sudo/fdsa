@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Me</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0a;
+            color: #e0d6f0;
+            line-height: 1.6;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+            background: radial-gradient(ellipse at center, #1a0a2e 0%, #0a0a0a 70%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(20, 10, 30, 0.92);
+            border-radius: 24px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 10px 60px rgba(120, 50, 200, 0.25);
+            border: 1px solid rgba(150, 80, 255, 0.15);
+            backdrop-filter: blur(2px);
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            text-align: center;
+            border-bottom: 2px solid rgba(150, 80, 255, 0.25);
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #c084fc, #a855f7, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+        }
+
+        .header .tagline {
+            font-size: 1.2rem;
+            color: #a78bfa;
+            margin-top: 0.25rem;
+            font-weight: 300;
+        }
+
+        .header .voice-tag {
+            font-size: 0.9rem;
+            color: #8b5cf6;
+            margin-top: 0.3rem;
+            font-style: italic;
+            background: rgba(139, 92, 246, 0.1);
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            display: inline-block;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        /* ===== SECTIONS ===== */
+        .section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section h2 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #c084fc;
+            border-left: 5px solid #7c3aed;
+            padding-left: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .section p,
+        .section li {
+            font-size: 1.05rem;
+            color: #d4c8e8;
+        }
+
+        /* ===== LISTS ===== */
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            padding: 0.4rem 0;
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+        }
+
+        ul li::before {
+            content: "▹";
+            color: #8b5cf6;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* ===== SKILL BADGES ===== */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 0.4rem;
+        }
+
+        .skill-badge {
+            background: rgba(139, 92, 246, 0.15);
+            color: #c084fc;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            border: 1px solid rgba(139, 92, 246, 0.25);
+            transition: all 0.3s ease;
+        }
+
+        .skill-badge:hover {
+            background: rgba(139, 92, 246, 0.3);
+            border-color: #7c3aed;
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(124, 58, 237, 0.2);
+        }
+
+        /* ===== PASSIONS ===== */
+        .passion-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin-top: 0.4rem;
+        }
+
+        .passion-item {
+            background: rgba(30, 15, 50, 0.6);
+            padding: 1rem 1.2rem;
+            border-radius: 16px;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .passion-item:hover {
+            border-color: rgba(139, 92, 246, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 25px rgba(124, 58, 237, 0.1);
+        }
+
+        .passion-item strong {
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+            color: #c084fc;
+        }
+
+        .passion-item p {
+            font-size: 0.95rem;
+            color: #b8a8d0;
+            margin: 0;
+        }
+
+        /* ===== FUN FACTS ===== */
+        .facts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+            margin-top: 0.4rem;
+        }
+
+        .fact-item {
+            background: rgba(30, 15, 50, 0.5);
+            padding: 0.6rem 1rem;
+            border-radius: 12px;
+            border: 1px solid rgba(139, 92, 246, 0.15);
+            font-size: 1rem;
+            color: #d4c8e8;
+            transition: all 0.3s ease;
+        }
+
+        .fact-item:hover {
+            border-color: rgba(139, 92, 246, 0.3);
+            background: rgba(30, 15, 50, 0.8);
+        }
+
+        .fact-item strong {
+            color: #c084fc;
+        }
+
+        /* ===== DISABILITIES / NEURODIVERSITY ===== */
+        .disability-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 0.4rem;
+        }
+
+        .disability-item {
+            background: rgba(50, 20, 70, 0.4);
+            padding: 1rem 1.2rem;
+            border-radius: 16px;
+            border: 1px solid rgba(139, 92, 246, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .disability-item:hover {
+            border-color: rgba(139, 92, 246, 0.3);
+            background: rgba(50, 20, 70, 0.6);
+        }
+
+        .disability-item strong {
+            display: block;
+            font-size: 1.05rem;
+            margin-bottom: 0.2rem;
+            color: #d8b4fe;
+        }
+
+        .disability-item p {
+            font-size: 0.95rem;
+            color: #b8a8d0;
+            margin: 0;
+        }
+
+        /* ===== INTRUSIVE THOUGHTS ===== */
+        .intrusive-box {
+            background: rgba(80, 20, 40, 0.3);
+            border: 1px solid rgba(200, 80, 120, 0.25);
+            border-radius: 16px;
+            padding: 1.2rem 1.5rem;
+            margin-top: 0.4rem;
+        }
+
+        .intrusive-box p {
+            margin: 0.3rem 0;
+            font-size: 1.05rem;
+            color: #d4c8e8;
+        }
+
+        .intrusive-box .highlight {
+            color: #f472b6;
+            font-weight: 600;
+        }
+
+        /* ===== DEEP VOICE SECTION ===== */
+        .voice-box {
+            background: rgba(30, 10, 60, 0.5);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 16px;
+            padding: 1.2rem 1.5rem;
+            margin-top: 0.4rem;
+        }
+
+        .voice-box p {
+            margin: 0.4rem 0;
+            font-size: 1.05rem;
+            color: #d4c8e8;
+        }
+
+        .voice-box .deep {
+            color: #a78bfa;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .voice-box .funny {
+            color: #fbbf24;
+            font-weight: 500;
+        }
+
+        /* ===== CONTACT ===== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 0.4rem;
+        }
+
+        .contact-item {
+            background: rgba(30, 15, 50, 0.5);
+            padding: 0.8rem 1.2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(139, 92, 246, 0.15);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            border-color: rgba(139, 92, 246, 0.3);
+            background: rgba(30, 15, 50, 0.8);
+        }
+
+        .contact-item strong {
+            display: block;
+            font-size: 0.9rem;
+            color: #a78bfa;
+            margin-bottom: 0.1rem;
+        }
+
+        .contact-item a {
+            color: #c084fc;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            word-break: break-all;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: #d8b4fe;
+            text-decoration: underline;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            text-align: center;
+            margin-top: 2.5rem;
+            font-size: 0.85rem;
+            color: #6b5b7a;
+            border-top: 1px solid rgba(139, 92, 246, 0.15);
+            padding-top: 1.2rem;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 700px) {
+            .container {
+                padding: 1.5rem 1rem;
+            }
+
+            .header h1 {
+                font-size: 2.2rem;
+            }
+
+            .facts-grid,
+            .disability-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .passion-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                gap: 0.4rem;
+            }
+
+            .skill-badge {
+                font-size: 0.85rem;
+                padding: 0.2rem 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- ===== HEADER ===== -->
+        <div class="header">
+            <h1>👋 I'm Damien Mehlbaum</h1>
+            <div class="tagline">Student · Developer · Tech Enthusiast · Problem Solver</div>
+            <div class="voice-tag">
+                🎤 <strong>Warning:</strong> I sound like a 37-year-old man. I am not 37. I am 15. lol
+            </div>
+        </div>
+
+        <!-- ===== BASIC INFO ===== -->
+        <div class="section">
+            <h2>📌 About Me</h2>
+            <p>
+                <strong>Name:</strong> Damien Mehlbaum<br />
+                <strong>Birthday:</strong> March 10th 2011<br />
+                <strong>Age:</strong> 15 (but my voice says otherwise)<br />
+                <strong>Currently:</strong> Attending Middletown Area High School i graduate in 2030!
+            </p>
+            <p style="margin-top: 0.6rem;">
+                I'm passionate about <strong>coding, soccer, math, and technology</strong>. I love solving
+                problems — whether it's debugging a program, figuring out a tricky equation,
+                finding the perfect pass on the field, or taking apart a broken laptop to fix it.
+                My goal is to become a big developer.
+            </p>
+            <p style="margin-top: 0.6rem; font-style: italic; color: #a78bfa;">
+                🗣️ "People hear me on the phone and think I'm their dad. I'm literally in high school."
+            </p>
+        </div>
+
+        <!-- ===== DEEP VOICE SECTION ===== -->
+        <div class="section">
+            <h2>🎙️ The Voice Situation</h2>
+            <div class="voice-box">
+                <p>
+                    <span class="deep">🎤 "Hello, this is Damien speaking."</span>
+                </p>
+                <p>
+                    <span class="funny">😭 Every. Single. Time.</span> I have a <span class="deep">ridiculously deep voice</span> for a 15-year-old. People hear me and immediately think I'm in my late 30s.
+                </p>
+                <p>
+                    <span class="deep">📞 "Is your father home?"</span>
+                    <span class="funny">🤦 That was me. I am the father. I'm not a father. I'm a teenager.</span>
+                </p>
+                <p>
+                    I've been told I sound like many different people or that I narrate documentaries, or that I should do voiceovers for movie trailers. 
+                    <span class="deep">"In a world... where one 15-year-old sounds like a 37-year-old..."</span>
+                </p>
+                <p>
+                    <span class="funny">😂 The best part?</span> When people meet me in person and their face just <span class="deep">🫢 drops</span> because they were expecting a middle-aged man and instead they get a high schooler with a deep voice.
+                </p>
+                <p style="font-size: 0.9rem; color: #8b7a9a; margin-top: 0.5rem;">
+                    🎭 I've just accepted it at this point. I use it to my advantage — I order food and they take me seriously. I call tech support and they think I'm an adult. It's a superpower, honestly.
+                </p>
+            </div>
+        </div>
+
+        <!-- ===== PASSIONS ===== -->
+        <div class="section">
+            <h2>⚽➕💻🔧 My Passions</h2>
+            <div class="passion-grid">
+                <div class="passion-item">
+                    <strong>⚽ Soccer</strong>
+                    <p>I've been playing soccer since I was 10. I love the teamwork, strategy, and the thrill of a good match. I play Striker And Defenese!</p>
+                </div>
+                <div class="passion-item">
+                    <strong>➕ Mathematics</strong>
+                    <p>Math is everywhere — from algorithms to architecture. I especially enjoy many differnet things about math and the way it helps me think logically and creatively.</p>
+                </div>
+                <div class="passion-item">
+                    <strong>💻 Coding</strong>
+                    <p>Coding is my creative outlet. I love building things from scratch, learning new languages, and seeing my ideas come to life. I'm always working on a new project.</p>
+                </div>
+                <div class="passion-item">
+                    <strong>🔧 Technology &amp; Hardware</strong>
+                    <p>I have a natural curiosity for how things work. I love taking apart computers, phones, and gadgets to see what's inside — and more importantly, putting them back together. I can fix broken components, remove faulty parts, and upgrade hardware with confidence.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== CODING SKILLS ===== -->
+        <div class="section">
+            <h2>💻 Coding Skills</h2>
+            <div class="skills-grid">
+                <span class="skill-badge">Python</span>
+                <span class="skill-badge">JavaScript</span>
+                <span class="skill-badge">HTML</span>
+                <span class="skill-badge">CSS</span>
+                <span class="skill-badge">React</span>
+                <span class="skill-badge">Node.js</span>
+                <span class="skill-badge">Java</span>
+                <span class="skill-badge">C++</span>
+                <span class="skill-badge">Lua</span>
+                <span class="skill-badge">Scratch</span>
+                <span class="skill-badge">SQL</span>
+                <span class="skill-badge">C++</span>
+                <span class="skill-badge">Typescript</span>
+                <span class="skill-badge">PHP</span>
+                <span class="skill-badge">Swift</span>
+                <span class="skill-badge">And alot more!</span>
+            </div>
+            <p style="margin-top: 0.8rem; font-size: 0.95rem; color: #8b7a9a;">
+                ⚡ I'm currently learning about Quantem Mechanics, Space, Time, wormholes, blackholes, and many stuff!
+            </p>
+        </div>
+
+        <!-- ===== TECH SKILLS ===== -->
+        <div class="section">
+            <h2>🛠️ Tech &amp; Hardware Skills</h2>
+            <ul>
+                <li><strong>Hardware Repair</strong> — I can take apart laptops, desktops, and phones to diagnose, fix, or remove faulty components and reassemble them.</li>
+                <li><strong>Operating Systems</strong> — I can install and configure various operating systems including Windows, Linux (Ubuntu, Mint, Arch), and even dual-boot setups.</li>
+                <li><strong>Upgrades &amp; Mods</strong> — I've upgraded RAM, storage, and graphics cards, and I know how to safely replace thermal paste and cooling systems.</li>
+                <li><strong>Troubleshooting</strong> — I'm patient and methodical when something breaks. I love the challenge of figuring out what went wrong and fixing it.</li>
+            </ul>
+        </div>
+
+        <!-- ===== WHAT I DO ===== -->
+        <div class="section">
+            <h2>🚀 What I Do</h2>
+            <ul>
+                <li><strong>Build Websites &amp; Apps</strong> — I create responsive, user-friendly web applications.</li>
+                <li><strong>Write Code</strong> — I solve real-world problems with clean, efficient code.</li>
+                <li><strong>Game Development</strong> — I enjoy websites, and creations sometimes it'll keep me busy for days</li>
+                <li><strong>Math &amp; Logic</strong> — I apply mathematical thinking to programming and problem-solving.</li>
+                <li><strong>Hardware Tinkering</strong> — I fix, upgrade, and modify computers and electronics.</li>
+                <li><strong>Collaborate</strong> — I work well By myself and love sharing knowledge.</li>
+                <li><strong>Learn &amp; Teach</strong> — I'm always exploring new tech and helping others learn.</li>
+            </ul>
+        </div>
+
+        <!-- ===== FUN FACTS ===== -->
+        <div class="section">
+            <h2>✨ Fun Facts About Me</h2>
+            <div class="facts-grid">
+                <div class="fact-item"><strong>🎵 Music:</strong> I play Guitar / love Country And Metal Music!</div>
+                <div class="fact-item"><strong>🌍 Travel:</strong> I've been to 8 different states!.</div>
+                <div class="fact-item"><strong>☕ Coffee:</strong> I can't function without coffee or stress toy.</div>
+                <div class="fact-item"><strong>🏆 Achievements:</strong> [a cool award or project].</div>
+                <div class="fact-item"><strong>🎮 Hobbies:</strong> [gaming / hiking / painting / etc.].</div>
+                <div class="fact-item"><strong>🐾 Pets:</strong> I have [X] pets — [names/types].</div>
+                <div class="fact-item"><strong>🍕 Food:</strong> My favorite food is Stromboli.</div>
+                <div class="fact-item"><strong>⏰ Night Owl:</strong> I do my best work after 8 pm.</div>
+                <div class="fact-item"><strong>🗣️ Voice:</strong> I sound like a 37-year-old man. I'm 15.</div>
+                <div class="fact-item"><strong>📞 Phone Confusion:</strong> People ask to speak to my parents. I am the parent voice.</div>
+            </div>
+            <p style="margin-top: 0.8rem; font-size: 1rem; color: #b8a8d0;">
+                Bonus fact: did you know i can run fast.
+            </p>
+        </div>
+
+        <!-- ===== DISABILITIES / NEURODIVERSITY ===== -->
+        <div class="section">
+            <h2>🧠 My Neurodivergent &amp; Physical Journey</h2>
+            <div class="disability-grid">
+                <div class="disability-item">
+                    <strong>🦻 Hard of Hearing</strong>
+                    <p>I wear cochlear processors on both sides and sometimes use i will use lip-reading, It's taught me to be a better listener and communicator.</p>
+                </div>
+                <div class="disability-item">
+                    <strong>👓 Glasses</strong>
+                    <p>I've worn glasses since i was . They're part of my style now!</p>
+                </div>
+                <div class="disability-item">
+                    <strong>🧠 ADHD</strong>
+                    <p>My mind moves fast, which helps me think outside the box. I use tools like timers and lists to stay focused.</p>
+                </div>
+                <div class="disability-item">
+                    <strong>♾️ Autism</strong>
+                    <p>I see the world differently — in patterns, systems, and deep focus. It makes me a great problem-solver and a loyal friend.</p>
+                </div>
+                <div class="disability-item">
+                    <strong>🔁 OCD</strong>
+                    <p>I have a need for order and precision. In coding, this makes me detail-oriented and thorough.</p>
+                </div>
+                <div class="disability-item">
+                    <strong>➕ More</strong>
+                    <p>[Add any other disabilities or conditions you feel comfortable sharing — e.g., dyslexia, anxiety, etc.]</p>
+                </div>
+            </div>
+            <p style="margin-top: 0.8rem; font-size: 0.95rem; color: #8b7a9a;">
+                🌟 These aren't my limitations — they're different ways of thinking, learning, and creating.
+            </p>
+        </div>
+
+        <!-- ===== INTRUSIVE THOUGHTS ===== -->
+        <div class="section">
+            <h2>💭 Intrusive Thoughts &amp; Impulses</h2>
+            <div class="intrusive-box">
+                <p>
+                    <span class="highlight">⚠️ Real talk:</span> I deal with intrusive thoughts — the kind that pop up out of nowhere and make me want to say or do things I probably shouldn't.
+                </p>
+                <p>
+                    <span class="highlight">😅 The trouble:</span> Sometimes I act on them before thinking, and <span class="highlight">it almost always gets me in trouble</span> — whether it's blurting something out in class, making a risky joke, or impulsively taking apart something that wasn't broken.
+                </p>
+                <p>
+                    <span class="highlight">💪 The upside:</span> I'm self-aware, I'm working on it, and I always own up to my mistakes. I'm honest, I don't make excuses, and I learn from every impulsive moment. My brain moves fast — and while that sometimes gets me in hot water, it also makes me creative, curious, and quick on my feet.
+                </p>
+                <p style="font-size: 0.9rem; color: #8b6a7a; margin-top: 0.5rem;">
+                    🧠 I'm open about this because I believe in being real. If I ever say something out of pocket, call me out — I'll apologize, and mean it.
+                </p>
+            </div>
+        </div>
+
+        <!-- ===== MORE STUFF ===== -->
+        <div class="section">
+            <h2>🌌 More About Me</h2>
+            <ul>
+                <li><strong>🎯 Dream Job:</strong> i hadnt decided yet but maybe it has something to do with developing</li>
+                <li><strong>📅 Favorite Year:</strong> 2022 when the parademic hit and i spent my time learning code and stuff</li>
+                <li><strong>🎮 Current Obsession:</strong> im currently learning about space and time!!</li>
+                <li><strong>🧠 Random Skill:</strong> Sommething i can do is well anony people i know its werid</li>
+                <li><strong>🌙 Night or Day:</strong> Definitely night. I come alive after 10 PM.</li>
+                <li><strong>🤝 Pet Peeve:</strong> I hate when people say stuff behind my back</li>
+            </ul>
+        </div>
+        
+            <p style="margin-top: 1rem; font-size: 0.95rem; color: #8b7a9a; text-align: center;">
+                📍 Open to internships, collaborations, and good conversations.
+                <br />
+                <span style="font-size: 0.85rem; color: #6b5b7a;">
+                    🗣️ Call me if you want — I'll sound like your dad. I'm not your dad. I'm 15.
+                </span>
+            </p>
+        </div>
+
+        <!-- ===== FOOTER ===== -->
+        <div class="footer">
+            Built with ❤️ by Damien &bull; 2026
+            <br />
+            <span style="font-size: 0.75rem; color: #5a4a6a;">
+                🗣️ "I'm 15, I swear." — Me, every single day
+            </span>
+        </div>
+
+    </div>
+
+</body>
+</html>
